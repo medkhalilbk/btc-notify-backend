@@ -1,14 +1,22 @@
 
 import { Router } from 'express';
+
 /**
- * GET /api/v1/albums
- * @summary This is the summary of the endpoint
- * @tags album
- * @return {array<Song>} 200 - success response - application/json
+ * POST /api/v1/users/subscribe
+ * @summary This route allows the user to subscribe to the newsletter / notification service
+ * @param {Object} requestBody - The request body
+ * @param {string} requestBody.email - Email of the user
+ * @param {string} requestBody.notificationId - Notification ID of the user (optionally provided by the user)
+ * @tags User
+ * @return {string} 200 - success response - application/json
+ * @example response - 200 - example success response
+ * {
+ *   "message": "Subscription successful"
+ * }
  */
 
-export const defaultRoute = Router();
+export const apiRoutes = Router();
 
-defaultRoute.get('/', (req, res) => {
-  res.send("What's up doc ?!");
-});
+apiRoutes.post('/api/v1/users/subscribe', );
+
+export default apiRoutes;

@@ -1,3 +1,4 @@
+import { ConnectionTOdb } from './config/db';
 import express from "express";
 import type { Request, Response } from "express";
 import expressJSDocSwagger from "express-jsdoc-swagger";
@@ -11,12 +12,13 @@ app.use(helmet({
     }
   }
 }));
+
 expressJSDocSwagger(app)(jsDocOptions);
- 
+const dbConnection = new ConnectionTOdb(); 
 app.get("/", (req, res) => {
   res.send("Welcome to the API. Use /api for API endpoints.");
 });
-app.use("/api", require("./routes/apiRoutes"));
+
 app.post("/subscribe", (req : Request, res: Response) => {
 
   res.send("Hello World!");
