@@ -1,5 +1,6 @@
 
 import { Router } from 'express';
+import { userSubscriptionController } from '../controllers/userController';
 
 /**
  * POST /api/v1/users/subscribe
@@ -17,6 +18,6 @@ import { Router } from 'express';
 
 export const apiRoutes = Router();
 
-apiRoutes.post('/api/v1/users/subscribe', );
+apiRoutes.post('/v1/users/subscribe', userSubscriptionController );
 
 export default apiRoutes;

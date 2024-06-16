@@ -1,10 +1,16 @@
 import { ConnectionTOdb } from './config/db';
 import express from "express";
-import type { Request, Response } from "express";
+import bodyParser from 'body-parser';
 import expressJSDocSwagger from "express-jsdoc-swagger";
 import helmet from "helmet";
 import jsDocOptions from "./config/jsDoc"; 
+import apiRoutes from "./routes/apiRoutes";
+
+var jsonParser = bodyParser.json();
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 const app = express();
+app.use(jsonParser);
+app.use(urlencodedParser);
 app.use(helmet({
   contentSecurityPolicy: {
     directives:{
@@ -19,10 +25,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to the API. Use /api for API endpoints.");
 });
 
-app.post("/subscribe", (req : Request, res: Response) => {
-
-  res.send("Hello World!");
-});
+ app.use("/api", apiRoutes);
 
 app.listen(3000, () => {
   console.log("Express server initialized");
