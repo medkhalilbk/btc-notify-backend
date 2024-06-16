@@ -2,11 +2,19 @@ import { Schema } from "mongoose"
 import { Model } from 'mongoose'
 
 
+export interface ILimit {
+    maxValue:Number;
+    currentValue:Number;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId: string | Object;
+}
+
 export interface IUser {
     _id?: Object
     email: string; 
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
     notificationId?: string;
     isSubscribed: boolean;
 }
